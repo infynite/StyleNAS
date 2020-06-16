@@ -8,21 +8,21 @@ class encoder(nn.Module):
         # vgg
         # 224 x 224
         self.conv1 = nn.Conv2d(3,3,1,1,0)
-        self.conv1.weight = torch.nn.Parameter(vgg.get(0).weight.float())
-        self.conv1.bias = torch.nn.Parameter(vgg.get(0).bias.float())
+        self.conv1.weight = torch.nn.Parameter(vgg["0"]["weight"].float())
+        self.conv1.bias = torch.nn.Parameter(vgg["0"]["bias"].float())
         self.reflecPad1 = nn.ReflectionPad2d((1,1,1,1))
         # 226 x 226
 
         self.conv2 = nn.Conv2d(3,64,3,1,0)
-        self.conv2.weight = torch.nn.Parameter(vgg.get(2).weight.float())
-        self.conv2.bias = torch.nn.Parameter(vgg.get(2).bias.float())
+        self.conv2.weight = torch.nn.Parameter(vgg["2"]["weight"].float())
+        self.conv2.bias = torch.nn.Parameter(vgg["2"]["bias"].float())
         self.relu2 = nn.ReLU(inplace=True)
         # 224 x 224
 
         self.reflecPad3 = nn.ReflectionPad2d((1,1,1,1))
         self.conv3 = nn.Conv2d(64,64,3,1,0)
-        self.conv3.weight = torch.nn.Parameter(vgg.get(5).weight.float())
-        self.conv3.bias = torch.nn.Parameter(vgg.get(5).bias.float())
+        self.conv3.weight = torch.nn.Parameter(vgg["5"]["weight"].float())
+        self.conv3.bias = torch.nn.Parameter(vgg["5"]["bias"].float())
         self.relu3 = nn.ReLU(inplace=True)
         # 224 x 224
 
@@ -31,15 +31,15 @@ class encoder(nn.Module):
 
         self.reflecPad4 = nn.ReflectionPad2d((1,1,1,1))
         self.conv4 = nn.Conv2d(64,128,3,1,0)
-        self.conv4.weight = torch.nn.Parameter(vgg.get(9).weight.float())
-        self.conv4.bias = torch.nn.Parameter(vgg.get(9).bias.float())
+        self.conv4.weight = torch.nn.Parameter(vgg["9"]["weight"].float())
+        self.conv4.bias = torch.nn.Parameter(vgg["9"]["bias"].float())
         self.relu4 = nn.ReLU(inplace=True)
         # 112 x 112
 
         self.reflecPad5 = nn.ReflectionPad2d((1,1,1,1))
         self.conv5 = nn.Conv2d(128,128,3,1,0)
-        self.conv5.weight = torch.nn.Parameter(vgg.get(12).weight.float())
-        self.conv5.bias = torch.nn.Parameter(vgg.get(12).bias.float())
+        self.conv5.weight = torch.nn.Parameter(vgg["12"]["weight"].float())
+        self.conv5.bias = torch.nn.Parameter(vgg["12"]["bias"].float())
         self.relu5 = nn.ReLU(inplace=True)
         # 112 x 112
 
@@ -48,29 +48,29 @@ class encoder(nn.Module):
 
         self.reflecPad6 = nn.ReflectionPad2d((1,1,1,1))
         self.conv6 = nn.Conv2d(128,256,3,1,0)
-        self.conv6.weight = torch.nn.Parameter(vgg.get(16).weight.float())
-        self.conv6.bias = torch.nn.Parameter(vgg.get(16).bias.float())
+        self.conv6.weight = torch.nn.Parameter(vgg["16"]["weight"].float())
+        self.conv6.bias = torch.nn.Parameter(vgg["16"]["bias"].float())
         self.relu6 = nn.ReLU(inplace=True)
         # 56 x 56
 
         self.reflecPad7 = nn.ReflectionPad2d((1,1,1,1))
         self.conv7 = nn.Conv2d(256,256,3,1,0)
-        self.conv7.weight = torch.nn.Parameter(vgg.get(19).weight.float())
-        self.conv7.bias = torch.nn.Parameter(vgg.get(19).bias.float())
+        self.conv7.weight = torch.nn.Parameter(vgg["19"]["weight"].float())
+        self.conv7.bias = torch.nn.Parameter(vgg["19"]["bias"].float())
         self.relu7 = nn.ReLU(inplace=True)
         # 56 x 56
 
         self.reflecPad8 = nn.ReflectionPad2d((1,1,1,1))
         self.conv8 = nn.Conv2d(256,256,3,1,0)
-        self.conv8.weight = torch.nn.Parameter(vgg.get(22).weight.float())
-        self.conv8.bias = torch.nn.Parameter(vgg.get(22).bias.float())
+        self.conv8.weight = torch.nn.Parameter(vgg["22"]["weight"].float())
+        self.conv8.bias = torch.nn.Parameter(vgg["22"]["bias"].float())
         self.relu8 = nn.ReLU(inplace=True)
         # 56 x 56
 
         self.reflecPad9 = nn.ReflectionPad2d((1,1,1,1))
         self.conv9 = nn.Conv2d(256,256,3,1,0)
-        self.conv9.weight = torch.nn.Parameter(vgg.get(25).weight.float())
-        self.conv9.bias = torch.nn.Parameter(vgg.get(25).bias.float())
+        self.conv9.weight = torch.nn.Parameter(vgg["25"]["weight"].float())
+        self.conv9.bias = torch.nn.Parameter(vgg["25"]["bias"].float())
         self.relu9 = nn.ReLU(inplace=True)
         # 56 x 56
 
@@ -79,29 +79,29 @@ class encoder(nn.Module):
 
         self.reflecPad10 = nn.ReflectionPad2d((1,1,1,1))
         self.conv10 = nn.Conv2d(256,512,3,1,0)
-        self.conv10.weight = torch.nn.Parameter(vgg.get(29).weight.float())
-        self.conv10.bias = torch.nn.Parameter(vgg.get(29).bias.float())
+        self.conv10.weight = torch.nn.Parameter(vgg["29"]["weight"].float())
+        self.conv10.bias = torch.nn.Parameter(vgg["29"]["bias"].float())
         self.relu10 = nn.ReLU(inplace=True)
         # 28 x 28
 
         self.reflecPad11 = nn.ReflectionPad2d((1,1,1,1))
         self.conv11 = nn.Conv2d(512,512,3,1,0)
-        self.conv11.weight = torch.nn.Parameter(vgg.get(32).weight.float())
-        self.conv11.bias = torch.nn.Parameter(vgg.get(32).bias.float())
+        self.conv11.weight = torch.nn.Parameter(vgg["32"]["weight"].float())
+        self.conv11.bias = torch.nn.Parameter(vgg["32"]["bias"].float())
         self.relu11 = nn.ReLU(inplace=True)
         # 28 x 28
 
         self.reflecPad12 = nn.ReflectionPad2d((1,1,1,1))
         self.conv12 = nn.Conv2d(512,512,3,1,0)
-        self.conv12.weight = torch.nn.Parameter(vgg.get(35).weight.float())
-        self.conv12.bias = torch.nn.Parameter(vgg.get(35).bias.float())
+        self.conv12.weight = torch.nn.Parameter(vgg["35"]["weight"].float())
+        self.conv12.bias = torch.nn.Parameter(vgg["35"]["bias"].float())
         self.relu12 = nn.ReLU(inplace=True)
         # 28 x 28
 
         self.reflecPad13 = nn.ReflectionPad2d((1,1,1,1))
         self.conv13 = nn.Conv2d(512,512,3,1,0)
-        self.conv13.weight = torch.nn.Parameter(vgg.get(38).weight.float())
-        self.conv13.bias = torch.nn.Parameter(vgg.get(38).bias.float())
+        self.conv13.weight = torch.nn.Parameter(vgg["38"]["weight"].float())
+        self.conv13.bias = torch.nn.Parameter(vgg["38"]["bias"].float())
         self.relu13 = nn.ReLU(inplace=True)
         # 28 x 28
 
@@ -110,8 +110,8 @@ class encoder(nn.Module):
 
         self.reflecPad14 = nn.ReflectionPad2d((1,1,1,1))
         self.conv14 = nn.Conv2d(512,512,3,1,0)
-        self.conv14.weight = torch.nn.Parameter(vgg.get(42).weight.float())
-        self.conv14.bias = torch.nn.Parameter(vgg.get(42).bias.float())
+        self.conv14.weight = torch.nn.Parameter(vgg["42"]["weight"].float())
+        self.conv14.bias = torch.nn.Parameter(vgg["42"]["bias"].float())
         self.relu14 = nn.ReLU(inplace=True)
         # 14 x 14
     def forward(self,x):
