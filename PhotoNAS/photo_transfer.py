@@ -1,5 +1,4 @@
 import sys
-sys.path.insert(0, '/home/zouyj/projects/style_transfer/stylenas/')
 import numpy as np
 import os
 import cv2
@@ -7,7 +6,6 @@ import torch
 import torch.nn as nn
 from matplotlib import pyplot as plt
 from dataset import TransferDataset
-from torch.utils.serialization import load_lua
 import argparse
 from torchvision import utils
 from torchvision import transforms
@@ -17,20 +15,20 @@ from wct import transform
 abs_dir = os.path.abspath(os.path.dirname(__file__))
 
 def load_net():
-    encoder_param = load_lua('/home/zouyj/projects/style_transfer/stylenas/models_photorealistic_nas/vgg_normalised_conv5_1.t7')
+    encoder_param = torch.load('trained_models_aaai/vgg_normalised_conv5_1_state.pth')
     net_e = encoder(encoder_param)
     net_d0 = decoder0()
-    net_d0.load_state_dict(torch.load(os.path.join(abs_dir, 'trained_models_aaai/decoder_epoch_2.pth.tar')))
+    net_d0.load_state_dict(torch.load('trained_models_aaai/decoder_epoch_2.pth.tar'))
     net_d1 = decoder1()
-    net_d1.load_state_dict(torch.load(os.path.join(abs_dir, 'trained_models_aaai/decoder_epoch_2.pth.tar')))
+    net_d1.load_state_dict(torch.load('trained_models_aaai/decoder_epoch_2.pth.tar'))
     net_d2 = decoder2()
-    net_d2.load_state_dict(torch.load(os.path.join(abs_dir, 'trained_models_aaai/decoder_epoch_2.pth.tar')))
+    net_d2.load_state_dict(torch.load('trained_models_aaai/decoder_epoch_2.pth.tar'))
     net_d3 = decoder3()
-    net_d3.load_state_dict(torch.load(os.path.join(abs_dir, 'trained_models_aaai/decoder_epoch_2.pth.tar')))
+    net_d3.load_state_dict(torch.load('trained_models_aaai/decoder_epoch_2.pth.tar'))
     net_d4 = decoder4()
-    net_d4.load_state_dict(torch.load(os.path.join(abs_dir, 'trained_models_aaai/decoder_epoch_2.pth.tar')))
+    net_d4.load_state_dict(torch.load('trained_models_aaai/decoder_epoch_2.pth.tar'))
     net_d5 = decoder5()
-    net_d5.load_state_dict(torch.load(os.path.join(abs_dir, 'trained_models_aaai/decoder_epoch_2.pth.tar')))
+    net_d5.load_state_dict(torch.load('trained_models_aaai/decoder_epoch_2.pth.tar'))
     return net_e, net_d0, net_d1, net_d2, net_d3, net_d4, net_d5
 
 def get_test_list(root_dir):
